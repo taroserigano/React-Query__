@@ -10,6 +10,8 @@ export function CreatePost({ setCurrentPage }) {
   const createPostMutation = useMutation({
     mutationFn: createPost,
     onSuccess: data => {
+      // this will ensure that every time you add a new data (post), 
+      // the screen refetch and show the newest post 
       queryClient.setQueryData(["posts", data.id], data)
       queryClient.invalidateQueries(["posts"], { exact: true })
       setCurrentPage(<Post id={data.id} />)
