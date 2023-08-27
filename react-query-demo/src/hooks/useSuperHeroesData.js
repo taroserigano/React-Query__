@@ -1,3 +1,5 @@
+// granular manulation for fetch 
+
 import { useQuery, useMutation, useQueryClient } from 'react-query'
 // import axios from 'axios'
 import { request } from '../utils/axios-utils'
@@ -45,6 +47,9 @@ export const useAddSuperHeroData = () => {
     onMutate: async newHero => {
       await queryClient.cancelQueries('super-heroes')
       const previousHeroData = queryClient.getQueryData('super-heroes')
+
+      
+      // adding new Data onto the old data   
       queryClient.setQueryData('super-heroes', oldQueryData => {
         return {
           ...oldQueryData,
@@ -59,6 +64,7 @@ export const useAddSuperHeroData = () => {
     onError: (_err, _newTodo, context) => {
       queryClient.setQueryData('super-heroes', context.previousHeroData)
     },
+    // successful case 
     onSettled: () => {
       queryClient.invalidateQueries('super-heroes')
     }
