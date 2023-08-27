@@ -46,6 +46,8 @@ export default function Characters() {
         </button>
         <button
           onClick={() => setPage((old) => old + 1)}
+
+          //  with  "!", if data info next is null, return true and disable it !
           disabled={!data.info.next}
         >
           Next
