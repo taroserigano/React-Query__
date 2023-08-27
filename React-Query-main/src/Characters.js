@@ -5,8 +5,10 @@ import Character from "./Character";
 export default function Characters() {
   const [page, setPage] = useState(40);
 
+  // queryKey will have [characterName, pageNumber ] 
   const fetchCharacters = async ({ queryKey }) => {
     const response = await fetch(
+      // specify the pageNumber on 2nd item in the array [] 
       `https://rickandmortyapi.com/api/character?page=${queryKey[1]}`
     );
     return response.json();
