@@ -5,6 +5,8 @@ import { getPostsPaginated } from "./api/posts"
 export function PostListPaginated() {
   const [page, setPage] = useState(1)
 
+
+  // add previousdate in order to show previousDate while Loading the Next Page 
   const { status, error, data, isPreviousData } = useQuery({
     queryKey: ["posts", { page }],
     keepPreviousData: true, // the page will show the current page until loading next page will be finished 
