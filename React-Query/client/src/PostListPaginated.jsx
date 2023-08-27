@@ -7,7 +7,7 @@ export function PostListPaginated() {
 
   const { status, error, data, isPreviousData } = useQuery({
     queryKey: ["posts", { page }],
-    keepPreviousData: true,
+    keepPreviousData: true, // the page will show the current page until loading next page will be finished 
     queryFn: () => getPostsPaginated(page),
   })
 
