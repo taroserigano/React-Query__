@@ -14,6 +14,17 @@ export function CreatePost({ setCurrentPage }) {
       queryClient.invalidateQueries(["posts"], { exact: true })
       setCurrentPage(<Post id={data.id} />)
     },
+
+    // optional, when mutation is successful, {hi: "Bye"} will send in as Context
+    
+    // onMutate: variables => { 
+    //   retrn { hi: "Bye"} 
+    // },
+
+    // onSuccess: (data, variables, context) => { 
+    // console.log(context) 
+    //                                      } 
+    
   })
 
   function handleSubmit(e) {
