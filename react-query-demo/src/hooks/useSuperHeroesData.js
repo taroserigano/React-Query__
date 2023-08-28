@@ -45,7 +45,10 @@ export const useAddSuperHeroData = () => {
     // },
     /**Optimistic Update Start */
     onMutate: async newHero => {
+
+      // stop the traffic
       await queryClient.cancelQueries('super-heroes')
+      // get the current data 
       const previousHeroData = queryClient.getQueryData('super-heroes')
 
       
