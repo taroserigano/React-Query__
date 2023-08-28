@@ -16,6 +16,7 @@ export const DependentQueriesPage = ({ email }) => {
   const channelId = user?.data?.channelId
   useQuery(['courses', channelId], () => fetchCoursesByChannelId(channelId), {
     // !! is checking is it's undefined or not 
+    // if not undefined, fire the fetchCoursesByChannelId() method 
     enabled: !!channelId
   })
   return <div>DependentQueries</div>
