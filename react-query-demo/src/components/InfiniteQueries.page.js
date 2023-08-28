@@ -1,3 +1,7 @@
+// limit the items to show by only 2,
+// and show the 1st page, 
+// then, use the fetchNextPage mthod to load more pages 
+
 import { Fragment } from 'react'
 import { useInfiniteQuery } from 'react-query'
 import axios from 'axios'
@@ -16,8 +20,11 @@ export const InfiniteQueriesPage = () => {
     hasNextPage,
     isFetching,
     isFetchingNextPage
-  } = useInfiniteQuery(['colors'], fetchColors, {
-    getNextPageParam: (_lastPage, pages) => {
+  } = useInfiniteQuery(
+    // fetch Colors, then, 
+    ['colors'], fetchColors, {
+     // extract _lastPage, and pages attributes from the data 
+      getNextPageParam: (_lastPage, pages) => {
       if (pages.length < 4) {
         return pages.length + 1
       } else {
